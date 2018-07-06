@@ -10,7 +10,7 @@ CONN_INFO = {
 
 CONN_STR = '{user}/{psw}@{host}:{port}/{service}'.format(**CONN_INFO)
 
-QUERY = '''select * from jobs'''
+QUERY = '''/*create table TEST_MAITYP1 as*/ select * from JOBS '''
 
 
 class DB:
@@ -27,6 +27,15 @@ class DB:
 
 
 db = DB()
-result = db.query(QUERY)
-for row in result:
-    print(row)
+try:
+    result = db.query(QUERY)
+    for row in result:
+        print(row)
+except Exception as e:
+    print(e)
+
+else:
+    print("No exception found")
+
+finally:
+    print('finally:\n')
